@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotAlpha.NServiceBus.Saga.Advanced</name>
+    </assembly>
+    <members>
+        <member name="T:NServiceBus.ConfigureExtensions">
+            <summary>
+            Defines extensions on the <see cref="T:NServiceBus.Configure"/> class.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.ConfigureExtensions.AdvancedSagaMapping(NServiceBus.Configure)">
+            <summary>
+            Enables advanced saga mapping.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Saga.IEmptySagaMapping`2">
+            <summary>
+            Defines methods to add mapping clauses to an empty mapping.
+            </summary>
+            <typeparam name="TSagaData">The concrete type for the <see cref="T:NServiceBus.Saga.IContainSagaData"/> implementation.</typeparam>
+            <typeparam name="TMessage">The contrete type for the message that is being mapped.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Saga.IEmptySagaMapping`2.ByProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`1,System.Object}})">
+            <summary>
+            Add a clause mapping a property on the <see cref="!:TSagaData"/> instance on a property on the <see cref="!:TMessage"/> instance.
+            </summary>
+            <param name="sagaDataProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the saga data.</param>
+            <param name="messageProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the message.</param>
+        </member>
+        <member name="M:NServiceBus.Saga.IEmptySagaMapping`2.ByHeader(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Add a clause mapping a property on the <see cref="!:TSagaData"/> instance on a header on the <see cref="!:TMessage"/> instance.
+            </summary>
+            <param name="sagaDataProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the saga data.</param>
+            <param name="messageHeaderName">An <see cref="T:System.String"/> that defines the name of the header on the message.</param>
+        </member>
+        <member name="T:NServiceBus.Saga.IFilledSagaMapping`2">
+            <summary>
+            Defines methods to add mapping clauses to a mapping.
+            </summary>
+            <typeparam name="TSagaData">The concrete type for the <see cref="T:NServiceBus.Saga.IContainSagaData"/> implementation.</typeparam>
+            <typeparam name="TMessage">The contrete type for the message that is being mapped.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Saga.IFilledSagaMapping`2.AndByProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`1,System.Object}})">
+            <summary>
+            Add a clause mapping a property on the <see cref="!:TSagaData"/> instance on a property on the <see cref="!:TMessage"/> instance.
+            </summary>
+            <param name="sagaDataProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the saga data.</param>
+            <param name="messageProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the message.</param>
+        </member>
+        <member name="M:NServiceBus.Saga.IFilledSagaMapping`2.AndByHeader(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Add a clause mapping a property on the <see cref="!:TSagaData"/> instance on a header on the <see cref="!:TMessage"/> instance.
+            </summary>
+            <param name="sagaDataProperty">An <see cref="T:System.Linq.Expressions.Expression`1"/> that defines the property on the saga data.</param>
+            <param name="messageHeaderName">An <see cref="T:System.String"/> that defines the name of the header on the message.</param>
+        </member>
+        <member name="T:NServiceBus.Saga.Advanced.MappingStore">
+            <summary>
+            Contains all advanced saga mappings.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Saga.SagaExtensions">
+            <summary>
+            Defines extensions on the <see cref="T:NServiceBus.Saga.Saga`1"/> class.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Saga.SagaExtensions.ConfigureMapping``2(NServiceBus.Saga.Saga{``0})">
+            <summary>
+            Creates a new mapping between <see cref="!:TSagaData"/> and <see cref="!:TMessage"/>.
+            </summary>
+            <typeparam name="TSagaData">The concrete type for the <see cref="T:NServiceBus.Saga.IContainSagaData"/> implementation.</typeparam>
+            <typeparam name="TMessage">The contrete type for the message that is being mapped.</typeparam>
+            <param name="saga">The saga that should be mapped for.</param>
+            <returns>An empty mapping which can be used to define a mapping between <see cref="!:TSagaData"/> and <see cref="!:TMessage"/>.</returns>
+        </member>
+        <member name="T:NServiceBus.Saga.Advanced.SagaFinder`2">
+            <summary>
+            A generic implementation of the finder that will be used for advanced saga mappings.
+            </summary>
+            <typeparam name="TSagaData">The concrete type for the <see cref="T:NServiceBus.Saga.IContainSagaData"/> implementation that should be found.</typeparam>
+            <typeparam name="TMessage">The contrete type for the message that is being used to find the saga data.</typeparam>
+        </member>
+        <member name="P:NServiceBus.Saga.Advanced.SagaFinder`2.MappingStore">
+            <summary>
+            The <see cref="P:NServiceBus.Saga.Advanced.SagaFinder`2.MappingStore"/> instance that should be used by the finder.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Saga.Advanced.SagaFinder`2.SessionFactory">
+            <summary>
+            The <see cref="T:NServiceBus.Persistence.Raven.RavenSessionFactory"/> instance that should be used by the finder.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Saga.Advanced.SagaMapping`2">
+            <summary>
+            A definition of a mapping between a saga and a message.
+            </summary>
+            <typeparam name="TSagaData">The concrete type for the <see cref="T:NServiceBus.Saga.IContainSagaData"/> implementation.</typeparam>
+            <typeparam name="TMessage">The contrete type for the message that is being mapped.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Saga.Advanced.SagaMapping`2.AppendMappingClauses(System.Linq.IQueryable{`0},`1)">
+            <summary>
+            Appends the mapping defined within this instance to the provided query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="message">The instance of the message that is being used to find the saga data.</param>
+            <returns>The provided query, including the appended mapping clauses.</returns>
+        </member>
+    </members>
+</doc>
